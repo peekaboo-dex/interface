@@ -325,9 +325,9 @@ export default function HomePage() {
                     ...trail[0],
                   }}
                 >
-                  Sealed bid auctions
+                  Blind auctions
                   <br />
-                  for everyone
+                  done better
                 </AnimatedTitle>
 
                 <Spacer size={36} />
