@@ -61,7 +61,7 @@ d: 20563773862567319768830793269659125851152488070937910911775755734171690101603
 
 const settings = {
   apiKey: 'KiGcPuDovdjrKoIDFWcY7ejSc801oQXL', // Replace with your Alchemy API Key.
-  network: Network.ETH_GOERLI, // Replace with your network.
+  network: Network.OPT_GOERLI, // Replace with your network.
 }
 
 const alchemy = new Alchemy(settings)
@@ -239,7 +239,7 @@ export default function HomePage() {
 
   const hasActiveAuction = !!auctionStore.activeAuctionId
 
-  const chainId = 5
+  const chainId = DEFAULT_CHAIN_ID
 
   const [selectedNft, setSelectedNft] = useState<NftDataFromAlchemy | null>(null)
 
