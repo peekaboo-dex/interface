@@ -452,7 +452,7 @@ export default function HomePage() {
   const windowWidth = useWindowWidth()
   const isScreenSmall = windowWidth <= breakpoints.upToMedium
 
-  const NftName = `Peekaboo Test NFT #7`
+  const NftName = `Peekaboo Test NFT #${randomId}`
   const collectionName = `Peekaboo Test Collection`
 
   const [manuallyStarted, setManuallyStarted] = useState<boolean>(false)
@@ -608,7 +608,7 @@ export default function HomePage() {
                                 >
                                   <div>{getShortenedAddress(bid.bidder)}</div>
 
-                                  <div style={{ position: 'relative' }}>
+                                  <div style={{ position: 'relative', fontVariant: 'tabular-nums' }}>
                                     {showIsWinner && (
                                       <div
                                         style={{
