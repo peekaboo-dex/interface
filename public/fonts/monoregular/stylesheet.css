@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'mono-regular';
+  src: url('favoritmono-regular-webfont.eot');
+  src: url('favoritmono-regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('favoritmono-regular-webfont.woff2') format('woff2'),
+    url('favoritmono-regular-webfont.woff') format('woff'),
+    url('favoritmono-regular-webfont.ttf') format('truetype'),
+    url('favoritmono-regular-webfont.svg#_.book') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

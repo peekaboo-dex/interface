@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'extended-regular';
+  src: url('favoritextended-regular-webfont.eot');
+  src: url('favoritextended-regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('favoritextended-regular-webfont.woff2') format('woff2'),
+    url('favoritextended-regular-webfont.woff') format('woff'),
+    url('favoritextended-regular-webfont.ttf') format('truetype'),
+    url('favoritextended-regular-webfont.svg#_.book') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
