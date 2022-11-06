@@ -44,7 +44,7 @@ import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
 import { useIsomorphicLayoutEffect } from '@react-spring/web'
 
 const { chains, provider } = configureChains(
-  [chain.goerli],
+  [chain.optimismGoerli],
   [
     jsonRpcProvider({
       rpc: (chain) => ({
