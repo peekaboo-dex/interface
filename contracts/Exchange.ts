@@ -13,307 +13,275 @@ import type {
   PopulatedTransaction,
   Signer,
   utils,
-} from "ethers";
-import type {
-  FunctionFragment,
-  Result,
-  EventFragment,
-} from "@ethersproject/abi";
-import type { Listener, Provider } from "@ethersproject/providers";
-import type {
-  TypedEventFilter,
-  TypedEvent,
-  TypedListener,
-  OnEvent,
-  PromiseOrValue,
-} from "./common";
+} from 'ethers'
+import type { FunctionFragment, Result, EventFragment } from '@ethersproject/abi'
+import type { Listener, Provider } from '@ethersproject/providers'
+import type { TypedEventFilter, TypedEvent, TypedListener, OnEvent, PromiseOrValue } from './common'
 
 export declare namespace IExchange {
   export type PuzzleStruct = {
-    input: PromiseOrValue<BytesLike>;
-    p: PromiseOrValue<BigNumberish>;
-    q: PromiseOrValue<BigNumberish>;
-    d: PromiseOrValue<BigNumberish>;
-  };
+    input: PromiseOrValue<BytesLike>
+    p: PromiseOrValue<BigNumberish>
+    q: PromiseOrValue<BigNumberish>
+    d: PromiseOrValue<BigNumberish>
+  }
 
   export type PuzzleStructOutput = [string, BigNumber, BigNumber, BigNumber] & {
-    input: string;
-    p: BigNumber;
-    q: BigNumber;
-    d: BigNumber;
-  };
+    input: string
+    p: BigNumber
+    q: BigNumber
+    d: BigNumber
+  }
 }
 
 export interface ExchangeInterface extends utils.Interface {
   functions: {
-    "auctions(uint256)": FunctionFragment;
-    "claimRefund(uint256)": FunctionFragment;
-    "closeAuction(uint256,uint256,uint256,uint256)": FunctionFragment;
-    "commitBid(uint256,uint256)": FunctionFragment;
-    "createAuction(address,uint256,uint256,bytes)": FunctionFragment;
-    "currentAuctionId()": FunctionFragment;
-    "decrypt(uint256,uint256,uint256,uint256)": FunctionFragment;
-    "finalityDelay()": FunctionFragment;
-    "finalizeAuction(uint256)": FunctionFragment;
-    "revealBid(uint256,address)": FunctionFragment;
-    "sealedBids(uint256,address)": FunctionFragment;
-    "settled(uint256,address)": FunctionFragment;
-    "test()": FunctionFragment;
-    "test2()": FunctionFragment;
-    "unsealedBids(uint256,address)": FunctionFragment;
-  };
+    'auctions(uint256)': FunctionFragment
+    'claimRefund(uint256)': FunctionFragment
+    'closeAuction(uint256,uint256,uint256,uint256)': FunctionFragment
+    'commitBid(uint256,uint256)': FunctionFragment
+    'createAuction(address,uint256,uint256,bytes)': FunctionFragment
+    'currentAuctionId()': FunctionFragment
+    'decrypt(uint256,uint256,uint256,uint256)': FunctionFragment
+    'finalityDelay()': FunctionFragment
+    'finalizeAuction(uint256)': FunctionFragment
+    'onERC721Received(address,address,uint256,bytes)': FunctionFragment
+    'revealBid(uint256,address)': FunctionFragment
+    'sealedBids(uint256,address)': FunctionFragment
+    'settled(uint256,address)': FunctionFragment
+    'test()': FunctionFragment
+    'test2()': FunctionFragment
+    'unsealedBids(uint256,address)': FunctionFragment
+  }
 
   getFunction(
     nameOrSignatureOrTopic:
-      | "auctions"
-      | "claimRefund"
-      | "closeAuction"
-      | "commitBid"
-      | "createAuction"
-      | "currentAuctionId"
-      | "decrypt"
-      | "finalityDelay"
-      | "finalizeAuction"
-      | "revealBid"
-      | "sealedBids"
-      | "settled"
-      | "test"
-      | "test2"
-      | "unsealedBids"
-  ): FunctionFragment;
+      | 'auctions'
+      | 'claimRefund'
+      | 'closeAuction'
+      | 'commitBid'
+      | 'createAuction'
+      | 'currentAuctionId'
+      | 'decrypt'
+      | 'finalityDelay'
+      | 'finalizeAuction'
+      | 'onERC721Received'
+      | 'revealBid'
+      | 'sealedBids'
+      | 'settled'
+      | 'test'
+      | 'test2'
+      | 'unsealedBids',
+  ): FunctionFragment
 
+  encodeFunctionData(functionFragment: 'auctions', values: [PromiseOrValue<BigNumberish>]): string
   encodeFunctionData(
-    functionFragment: "auctions",
-    values: [PromiseOrValue<BigNumberish>]
-  ): string;
+    functionFragment: 'claimRefund',
+    values: [PromiseOrValue<BigNumberish>],
+  ): string
   encodeFunctionData(
-    functionFragment: "claimRefund",
-    values: [PromiseOrValue<BigNumberish>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "closeAuction",
+    functionFragment: 'closeAuction',
     values: [
       PromiseOrValue<BigNumberish>,
       PromiseOrValue<BigNumberish>,
       PromiseOrValue<BigNumberish>,
-      PromiseOrValue<BigNumberish>
-    ]
-  ): string;
+      PromiseOrValue<BigNumberish>,
+    ],
+  ): string
   encodeFunctionData(
-    functionFragment: "commitBid",
-    values: [PromiseOrValue<BigNumberish>, PromiseOrValue<BigNumberish>]
-  ): string;
+    functionFragment: 'commitBid',
+    values: [PromiseOrValue<BigNumberish>, PromiseOrValue<BigNumberish>],
+  ): string
   encodeFunctionData(
-    functionFragment: "createAuction",
+    functionFragment: 'createAuction',
     values: [
       PromiseOrValue<string>,
       PromiseOrValue<BigNumberish>,
       PromiseOrValue<BigNumberish>,
-      PromiseOrValue<BytesLike>
-    ]
-  ): string;
+      PromiseOrValue<BytesLike>,
+    ],
+  ): string
+  encodeFunctionData(functionFragment: 'currentAuctionId', values?: undefined): string
   encodeFunctionData(
-    functionFragment: "currentAuctionId",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "decrypt",
+    functionFragment: 'decrypt',
     values: [
       PromiseOrValue<BigNumberish>,
       PromiseOrValue<BigNumberish>,
       PromiseOrValue<BigNumberish>,
-      PromiseOrValue<BigNumberish>
-    ]
-  ): string;
+      PromiseOrValue<BigNumberish>,
+    ],
+  ): string
+  encodeFunctionData(functionFragment: 'finalityDelay', values?: undefined): string
   encodeFunctionData(
-    functionFragment: "finalityDelay",
-    values?: undefined
-  ): string;
+    functionFragment: 'finalizeAuction',
+    values: [PromiseOrValue<BigNumberish>],
+  ): string
   encodeFunctionData(
-    functionFragment: "finalizeAuction",
-    values: [PromiseOrValue<BigNumberish>]
-  ): string;
+    functionFragment: 'onERC721Received',
+    values: [
+      PromiseOrValue<string>,
+      PromiseOrValue<string>,
+      PromiseOrValue<BigNumberish>,
+      PromiseOrValue<BytesLike>,
+    ],
+  ): string
   encodeFunctionData(
-    functionFragment: "revealBid",
-    values: [PromiseOrValue<BigNumberish>, PromiseOrValue<string>]
-  ): string;
+    functionFragment: 'revealBid',
+    values: [PromiseOrValue<BigNumberish>, PromiseOrValue<string>],
+  ): string
   encodeFunctionData(
-    functionFragment: "sealedBids",
-    values: [PromiseOrValue<BigNumberish>, PromiseOrValue<string>]
-  ): string;
+    functionFragment: 'sealedBids',
+    values: [PromiseOrValue<BigNumberish>, PromiseOrValue<string>],
+  ): string
   encodeFunctionData(
-    functionFragment: "settled",
-    values: [PromiseOrValue<BigNumberish>, PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(functionFragment: "test", values?: undefined): string;
-  encodeFunctionData(functionFragment: "test2", values?: undefined): string;
+    functionFragment: 'settled',
+    values: [PromiseOrValue<BigNumberish>, PromiseOrValue<string>],
+  ): string
+  encodeFunctionData(functionFragment: 'test', values?: undefined): string
+  encodeFunctionData(functionFragment: 'test2', values?: undefined): string
   encodeFunctionData(
-    functionFragment: "unsealedBids",
-    values: [PromiseOrValue<BigNumberish>, PromiseOrValue<string>]
-  ): string;
+    functionFragment: 'unsealedBids',
+    values: [PromiseOrValue<BigNumberish>, PromiseOrValue<string>],
+  ): string
 
-  decodeFunctionResult(functionFragment: "auctions", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "claimRefund",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "closeAuction",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "commitBid", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "createAuction",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "currentAuctionId",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "decrypt", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "finalityDelay",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "finalizeAuction",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "revealBid", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "sealedBids", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "settled", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "test", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "test2", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "unsealedBids",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: 'auctions', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'claimRefund', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'closeAuction', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'commitBid', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'createAuction', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'currentAuctionId', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'decrypt', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'finalityDelay', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'finalizeAuction', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'onERC721Received', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'revealBid', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'sealedBids', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'settled', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'test', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'test2', data: BytesLike): Result
+  decodeFunctionResult(functionFragment: 'unsealedBids', data: BytesLike): Result
 
   events: {
-    "AuctionCreated(uint256,address,address,uint256,uint256,bytes)": EventFragment;
-    "AuctionFinalized(uint256,address,uint256)": EventFragment;
-    "AuctionPuzzleSolved(uint256,uint256,uint256,uint256)": EventFragment;
-    "BidCommitted(uint256,address,uint256,uint256)": EventFragment;
-    "BidRevealed(uint256,address,uint256,uint256,bool,bool)": EventFragment;
-    "Refund(uint256,uint256)": EventFragment;
-  };
+    'AuctionClosed(uint256,uint256,uint256,uint256)': EventFragment
+    'AuctionCreated(uint256,address,address,uint256,uint256,bytes)': EventFragment
+    'AuctionFinalized(uint256,address,uint256)': EventFragment
+    'BidCommitted(uint256,address,uint256,uint256)': EventFragment
+    'BidRevealed(uint256,address,uint256,uint256,bool,bool)': EventFragment
+    'Refund(uint256,uint256)': EventFragment
+  }
 
-  getEvent(nameOrSignatureOrTopic: "AuctionCreated"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "AuctionFinalized"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "AuctionPuzzleSolved"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "BidCommitted"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "BidRevealed"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "Refund"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: 'AuctionClosed'): EventFragment
+  getEvent(nameOrSignatureOrTopic: 'AuctionCreated'): EventFragment
+  getEvent(nameOrSignatureOrTopic: 'AuctionFinalized'): EventFragment
+  getEvent(nameOrSignatureOrTopic: 'BidCommitted'): EventFragment
+  getEvent(nameOrSignatureOrTopic: 'BidRevealed'): EventFragment
+  getEvent(nameOrSignatureOrTopic: 'Refund'): EventFragment
 }
 
+export interface AuctionClosedEventObject {
+  auctionId: BigNumber
+  p: BigNumber
+  q: BigNumber
+  d: BigNumber
+}
+export type AuctionClosedEvent = TypedEvent<
+  [BigNumber, BigNumber, BigNumber, BigNumber],
+  AuctionClosedEventObject
+>
+
+export type AuctionClosedEventFilter = TypedEventFilter<AuctionClosedEvent>
+
 export interface AuctionCreatedEventObject {
-  auctionId: BigNumber;
-  auctioneer: string;
-  tokenAddress: string;
-  tokenId: BigNumber;
-  publicKey: BigNumber;
-  puzzle: string;
+  auctionId: BigNumber
+  auctioneer: string
+  tokenAddress: string
+  tokenId: BigNumber
+  publicKey: BigNumber
+  puzzle: string
 }
 export type AuctionCreatedEvent = TypedEvent<
   [BigNumber, string, string, BigNumber, BigNumber, string],
   AuctionCreatedEventObject
->;
+>
 
-export type AuctionCreatedEventFilter = TypedEventFilter<AuctionCreatedEvent>;
+export type AuctionCreatedEventFilter = TypedEventFilter<AuctionCreatedEvent>
 
 export interface AuctionFinalizedEventObject {
-  auctionId: BigNumber;
-  winner: string;
-  winningBid: BigNumber;
+  auctionId: BigNumber
+  winner: string
+  winningBid: BigNumber
 }
 export type AuctionFinalizedEvent = TypedEvent<
   [BigNumber, string, BigNumber],
   AuctionFinalizedEventObject
->;
+>
 
-export type AuctionFinalizedEventFilter =
-  TypedEventFilter<AuctionFinalizedEvent>;
-
-export interface AuctionPuzzleSolvedEventObject {
-  auctionId: BigNumber;
-  p: BigNumber;
-  q: BigNumber;
-  d: BigNumber;
-}
-export type AuctionPuzzleSolvedEvent = TypedEvent<
-  [BigNumber, BigNumber, BigNumber, BigNumber],
-  AuctionPuzzleSolvedEventObject
->;
-
-export type AuctionPuzzleSolvedEventFilter =
-  TypedEventFilter<AuctionPuzzleSolvedEvent>;
+export type AuctionFinalizedEventFilter = TypedEventFilter<AuctionFinalizedEvent>
 
 export interface BidCommittedEventObject {
-  auctionId: BigNumber;
-  bidder: string;
-  sealedBid: BigNumber;
-  ethSent: BigNumber;
+  auctionId: BigNumber
+  bidder: string
+  sealedBid: BigNumber
+  ethSent: BigNumber
 }
 export type BidCommittedEvent = TypedEvent<
   [BigNumber, string, BigNumber, BigNumber],
   BidCommittedEventObject
->;
+>
 
-export type BidCommittedEventFilter = TypedEventFilter<BidCommittedEvent>;
+export type BidCommittedEventFilter = TypedEventFilter<BidCommittedEvent>
 
 export interface BidRevealedEventObject {
-  auctionId: BigNumber;
-  bidder: string;
-  bid: BigNumber;
-  obfuscation: BigNumber;
-  isCurrentHighestBid: boolean;
-  isValidBid: boolean;
+  auctionId: BigNumber
+  bidder: string
+  bid: BigNumber
+  obfuscation: BigNumber
+  isCurrentHighestBid: boolean
+  isValidBid: boolean
 }
 export type BidRevealedEvent = TypedEvent<
   [BigNumber, string, BigNumber, BigNumber, boolean, boolean],
   BidRevealedEventObject
->;
+>
 
-export type BidRevealedEventFilter = TypedEventFilter<BidRevealedEvent>;
+export type BidRevealedEventFilter = TypedEventFilter<BidRevealedEvent>
 
 export interface RefundEventObject {
-  auctionId: BigNumber;
-  amount: BigNumber;
+  auctionId: BigNumber
+  amount: BigNumber
 }
-export type RefundEvent = TypedEvent<[BigNumber, BigNumber], RefundEventObject>;
+export type RefundEvent = TypedEvent<[BigNumber, BigNumber], RefundEventObject>
 
-export type RefundEventFilter = TypedEventFilter<RefundEvent>;
+export type RefundEventFilter = TypedEventFilter<RefundEvent>
 
 export interface Exchange extends BaseContract {
-  connect(signerOrProvider: Signer | Provider | string): this;
-  attach(addressOrName: string): this;
-  deployed(): Promise<this>;
+  connect(signerOrProvider: Signer | Provider | string): this
+  attach(addressOrName: string): this
+  deployed(): Promise<this>
 
-  interface: ExchangeInterface;
+  interface: ExchangeInterface
 
   queryFilter<TEvent extends TypedEvent>(
     event: TypedEventFilter<TEvent>,
     fromBlockOrBlockhash?: string | number | undefined,
-    toBlock?: string | number | undefined
-  ): Promise<Array<TEvent>>;
+    toBlock?: string | number | undefined,
+  ): Promise<Array<TEvent>>
 
   listeners<TEvent extends TypedEvent>(
-    eventFilter?: TypedEventFilter<TEvent>
-  ): Array<TypedListener<TEvent>>;
-  listeners(eventName?: string): Array<Listener>;
-  removeAllListeners<TEvent extends TypedEvent>(
-    eventFilter: TypedEventFilter<TEvent>
-  ): this;
-  removeAllListeners(eventName?: string): this;
-  off: OnEvent<this>;
-  on: OnEvent<this>;
-  once: OnEvent<this>;
-  removeListener: OnEvent<this>;
+    eventFilter?: TypedEventFilter<TEvent>,
+  ): Array<TypedListener<TEvent>>
+  listeners(eventName?: string): Array<Listener>
+  removeAllListeners<TEvent extends TypedEvent>(eventFilter: TypedEventFilter<TEvent>): this
+  removeAllListeners(eventName?: string): this
+  off: OnEvent<this>
+  on: OnEvent<this>
+  once: OnEvent<this>
+  removeListener: OnEvent<this>
 
   functions: {
     auctions(
       arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<
       [
         BigNumber,
@@ -324,102 +292,104 @@ export interface Exchange extends BaseContract {
         IExchange.PuzzleStructOutput,
         BigNumber,
         string,
-        string,
-        number
+        number,
       ] & {
-        auctionId: BigNumber;
-        auctioneer: string;
-        tokenAddress: string;
-        tokenId: BigNumber;
-        publicKey: BigNumber;
-        puzzle: IExchange.PuzzleStructOutput;
-        puzzleSolvedTimestamp: BigNumber;
-        currentHighestBidder: string;
-        winner: string;
-        state: number;
+        auctionId: BigNumber
+        auctioneer: string
+        tokenAddress: string
+        tokenId: BigNumber
+        publicKey: BigNumber
+        puzzle: IExchange.PuzzleStructOutput
+        puzzleSolvedTimestamp: BigNumber
+        currentHighestBidder: string
+        state: number
       }
-    >;
+    >
 
     claimRefund(
       auctionId: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
+    ): Promise<ContractTransaction>
 
     closeAuction(
       auctionId: PromiseOrValue<BigNumberish>,
       p: PromiseOrValue<BigNumberish>,
       q: PromiseOrValue<BigNumberish>,
       d: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
+    ): Promise<ContractTransaction>
 
     commitBid(
       auctionId: PromiseOrValue<BigNumberish>,
       sealedBid: PromiseOrValue<BigNumberish>,
-      overrides?: PayableOverrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
+      overrides?: PayableOverrides & { from?: PromiseOrValue<string> },
+    ): Promise<ContractTransaction>
 
     createAuction(
       tokenAddress: PromiseOrValue<string>,
       tokenId: PromiseOrValue<BigNumberish>,
       publicKey: PromiseOrValue<BigNumberish>,
       puzzle: PromiseOrValue<BytesLike>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
+    ): Promise<ContractTransaction>
 
-    currentAuctionId(overrides?: CallOverrides): Promise<[BigNumber]>;
+    currentAuctionId(overrides?: CallOverrides): Promise<[BigNumber]>
 
     decrypt(
       p: PromiseOrValue<BigNumberish>,
       q: PromiseOrValue<BigNumberish>,
       d: PromiseOrValue<BigNumberish>,
       c: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
+      overrides?: CallOverrides,
+    ): Promise<[BigNumber]>
 
-    finalityDelay(overrides?: CallOverrides): Promise<[BigNumber]>;
+    finalityDelay(overrides?: CallOverrides): Promise<[BigNumber]>
 
     finalizeAuction(
       auctionId: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
+    ): Promise<ContractTransaction>
+
+    onERC721Received(
+      arg0: PromiseOrValue<string>,
+      arg1: PromiseOrValue<string>,
+      arg2: PromiseOrValue<BigNumberish>,
+      arg3: PromiseOrValue<BytesLike>,
+      overrides?: CallOverrides,
+    ): Promise<[string]>
 
     revealBid(
       auctionId: PromiseOrValue<BigNumberish>,
       bidder: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
+    ): Promise<ContractTransaction>
 
     sealedBids(
       arg0: PromiseOrValue<BigNumberish>,
       arg1: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<
-      [BigNumber, BigNumber] & { value: BigNumber; ethSent: BigNumber }
-    >;
+      overrides?: CallOverrides,
+    ): Promise<[BigNumber, BigNumber] & { value: BigNumber; ethSent: BigNumber }>
 
     settled(
       arg0: PromiseOrValue<BigNumberish>,
       arg1: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<[boolean]>;
+      overrides?: CallOverrides,
+    ): Promise<[boolean]>
 
-    test(overrides?: CallOverrides): Promise<[void]>;
+    test(overrides?: CallOverrides): Promise<[void]>
 
-    test2(overrides?: CallOverrides): Promise<[void]>;
+    test2(overrides?: CallOverrides): Promise<[void]>
 
     unsealedBids(
       arg0: PromiseOrValue<BigNumberish>,
       arg1: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<
-      [BigNumber, BigNumber] & { bid: BigNumber; obfuscation: BigNumber }
-    >;
-  };
+      overrides?: CallOverrides,
+    ): Promise<[BigNumber, BigNumber] & { bid: BigNumber; obfuscation: BigNumber }>
+  }
 
   auctions(
     arg0: PromiseOrValue<BigNumberish>,
-    overrides?: CallOverrides
+    overrides?: CallOverrides,
   ): Promise<
     [
       BigNumber,
@@ -430,100 +400,104 @@ export interface Exchange extends BaseContract {
       IExchange.PuzzleStructOutput,
       BigNumber,
       string,
-      string,
-      number
+      number,
     ] & {
-      auctionId: BigNumber;
-      auctioneer: string;
-      tokenAddress: string;
-      tokenId: BigNumber;
-      publicKey: BigNumber;
-      puzzle: IExchange.PuzzleStructOutput;
-      puzzleSolvedTimestamp: BigNumber;
-      currentHighestBidder: string;
-      winner: string;
-      state: number;
+      auctionId: BigNumber
+      auctioneer: string
+      tokenAddress: string
+      tokenId: BigNumber
+      publicKey: BigNumber
+      puzzle: IExchange.PuzzleStructOutput
+      puzzleSolvedTimestamp: BigNumber
+      currentHighestBidder: string
+      state: number
     }
-  >;
+  >
 
   claimRefund(
     auctionId: PromiseOrValue<BigNumberish>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
+    overrides?: Overrides & { from?: PromiseOrValue<string> },
+  ): Promise<ContractTransaction>
 
   closeAuction(
     auctionId: PromiseOrValue<BigNumberish>,
     p: PromiseOrValue<BigNumberish>,
     q: PromiseOrValue<BigNumberish>,
     d: PromiseOrValue<BigNumberish>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
+    overrides?: Overrides & { from?: PromiseOrValue<string> },
+  ): Promise<ContractTransaction>
 
   commitBid(
     auctionId: PromiseOrValue<BigNumberish>,
     sealedBid: PromiseOrValue<BigNumberish>,
-    overrides?: PayableOverrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
+    overrides?: PayableOverrides & { from?: PromiseOrValue<string> },
+  ): Promise<ContractTransaction>
 
   createAuction(
     tokenAddress: PromiseOrValue<string>,
     tokenId: PromiseOrValue<BigNumberish>,
     publicKey: PromiseOrValue<BigNumberish>,
     puzzle: PromiseOrValue<BytesLike>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
+    overrides?: Overrides & { from?: PromiseOrValue<string> },
+  ): Promise<ContractTransaction>
 
-  currentAuctionId(overrides?: CallOverrides): Promise<BigNumber>;
+  currentAuctionId(overrides?: CallOverrides): Promise<BigNumber>
 
   decrypt(
     p: PromiseOrValue<BigNumberish>,
     q: PromiseOrValue<BigNumberish>,
     d: PromiseOrValue<BigNumberish>,
     c: PromiseOrValue<BigNumberish>,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
+    overrides?: CallOverrides,
+  ): Promise<BigNumber>
 
-  finalityDelay(overrides?: CallOverrides): Promise<BigNumber>;
+  finalityDelay(overrides?: CallOverrides): Promise<BigNumber>
 
   finalizeAuction(
     auctionId: PromiseOrValue<BigNumberish>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
+    overrides?: Overrides & { from?: PromiseOrValue<string> },
+  ): Promise<ContractTransaction>
+
+  onERC721Received(
+    arg0: PromiseOrValue<string>,
+    arg1: PromiseOrValue<string>,
+    arg2: PromiseOrValue<BigNumberish>,
+    arg3: PromiseOrValue<BytesLike>,
+    overrides?: CallOverrides,
+  ): Promise<string>
 
   revealBid(
     auctionId: PromiseOrValue<BigNumberish>,
     bidder: PromiseOrValue<string>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
+    overrides?: Overrides & { from?: PromiseOrValue<string> },
+  ): Promise<ContractTransaction>
 
   sealedBids(
     arg0: PromiseOrValue<BigNumberish>,
     arg1: PromiseOrValue<string>,
-    overrides?: CallOverrides
-  ): Promise<[BigNumber, BigNumber] & { value: BigNumber; ethSent: BigNumber }>;
+    overrides?: CallOverrides,
+  ): Promise<[BigNumber, BigNumber] & { value: BigNumber; ethSent: BigNumber }>
 
   settled(
     arg0: PromiseOrValue<BigNumberish>,
     arg1: PromiseOrValue<string>,
-    overrides?: CallOverrides
-  ): Promise<boolean>;
+    overrides?: CallOverrides,
+  ): Promise<boolean>
 
-  test(overrides?: CallOverrides): Promise<void>;
+  test(overrides?: CallOverrides): Promise<void>
 
-  test2(overrides?: CallOverrides): Promise<void>;
+  test2(overrides?: CallOverrides): Promise<void>
 
   unsealedBids(
     arg0: PromiseOrValue<BigNumberish>,
     arg1: PromiseOrValue<string>,
-    overrides?: CallOverrides
-  ): Promise<
-    [BigNumber, BigNumber] & { bid: BigNumber; obfuscation: BigNumber }
-  >;
+    overrides?: CallOverrides,
+  ): Promise<[BigNumber, BigNumber] & { bid: BigNumber; obfuscation: BigNumber }>
 
   callStatic: {
     auctions(
       arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
+      overrides?: CallOverrides,
     ): Promise<
       [
         BigNumber,
@@ -534,336 +508,345 @@ export interface Exchange extends BaseContract {
         IExchange.PuzzleStructOutput,
         BigNumber,
         string,
-        string,
-        number
+        number,
       ] & {
-        auctionId: BigNumber;
-        auctioneer: string;
-        tokenAddress: string;
-        tokenId: BigNumber;
-        publicKey: BigNumber;
-        puzzle: IExchange.PuzzleStructOutput;
-        puzzleSolvedTimestamp: BigNumber;
-        currentHighestBidder: string;
-        winner: string;
-        state: number;
+        auctionId: BigNumber
+        auctioneer: string
+        tokenAddress: string
+        tokenId: BigNumber
+        publicKey: BigNumber
+        puzzle: IExchange.PuzzleStructOutput
+        puzzleSolvedTimestamp: BigNumber
+        currentHighestBidder: string
+        state: number
       }
-    >;
+    >
 
-    claimRefund(
-      auctionId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    claimRefund(auctionId: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<void>
 
     closeAuction(
       auctionId: PromiseOrValue<BigNumberish>,
       p: PromiseOrValue<BigNumberish>,
       q: PromiseOrValue<BigNumberish>,
       d: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<void>;
+      overrides?: CallOverrides,
+    ): Promise<void>
 
     commitBid(
       auctionId: PromiseOrValue<BigNumberish>,
       sealedBid: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<void>;
+      overrides?: CallOverrides,
+    ): Promise<void>
 
     createAuction(
       tokenAddress: PromiseOrValue<string>,
       tokenId: PromiseOrValue<BigNumberish>,
       publicKey: PromiseOrValue<BigNumberish>,
       puzzle: PromiseOrValue<BytesLike>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+      overrides?: CallOverrides,
+    ): Promise<BigNumber>
 
-    currentAuctionId(overrides?: CallOverrides): Promise<BigNumber>;
+    currentAuctionId(overrides?: CallOverrides): Promise<BigNumber>
 
     decrypt(
       p: PromiseOrValue<BigNumberish>,
       q: PromiseOrValue<BigNumberish>,
       d: PromiseOrValue<BigNumberish>,
       c: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+      overrides?: CallOverrides,
+    ): Promise<BigNumber>
 
-    finalityDelay(overrides?: CallOverrides): Promise<BigNumber>;
+    finalityDelay(overrides?: CallOverrides): Promise<BigNumber>
 
     finalizeAuction(
       auctionId: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<void>;
+      overrides?: CallOverrides,
+    ): Promise<void>
+
+    onERC721Received(
+      arg0: PromiseOrValue<string>,
+      arg1: PromiseOrValue<string>,
+      arg2: PromiseOrValue<BigNumberish>,
+      arg3: PromiseOrValue<BytesLike>,
+      overrides?: CallOverrides,
+    ): Promise<string>
 
     revealBid(
       auctionId: PromiseOrValue<BigNumberish>,
       bidder: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+      overrides?: CallOverrides,
+    ): Promise<BigNumber>
 
     sealedBids(
       arg0: PromiseOrValue<BigNumberish>,
       arg1: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<
-      [BigNumber, BigNumber] & { value: BigNumber; ethSent: BigNumber }
-    >;
+      overrides?: CallOverrides,
+    ): Promise<[BigNumber, BigNumber] & { value: BigNumber; ethSent: BigNumber }>
 
     settled(
       arg0: PromiseOrValue<BigNumberish>,
       arg1: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
+      overrides?: CallOverrides,
+    ): Promise<boolean>
 
-    test(overrides?: CallOverrides): Promise<void>;
+    test(overrides?: CallOverrides): Promise<void>
 
-    test2(overrides?: CallOverrides): Promise<void>;
+    test2(overrides?: CallOverrides): Promise<void>
 
     unsealedBids(
       arg0: PromiseOrValue<BigNumberish>,
       arg1: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<
-      [BigNumber, BigNumber] & { bid: BigNumber; obfuscation: BigNumber }
-    >;
-  };
+      overrides?: CallOverrides,
+    ): Promise<[BigNumber, BigNumber] & { bid: BigNumber; obfuscation: BigNumber }>
+  }
 
   filters: {
-    "AuctionCreated(uint256,address,address,uint256,uint256,bytes)"(
+    'AuctionClosed(uint256,uint256,uint256,uint256)'(
+      auctionId?: PromiseOrValue<BigNumberish> | null,
+      p?: null,
+      q?: null,
+      d?: null,
+    ): AuctionClosedEventFilter
+    AuctionClosed(
+      auctionId?: PromiseOrValue<BigNumberish> | null,
+      p?: null,
+      q?: null,
+      d?: null,
+    ): AuctionClosedEventFilter
+
+    'AuctionCreated(uint256,address,address,uint256,uint256,bytes)'(
       auctionId?: PromiseOrValue<BigNumberish> | null,
       auctioneer?: PromiseOrValue<string> | null,
       tokenAddress?: null,
       tokenId?: null,
       publicKey?: null,
-      puzzle?: null
-    ): AuctionCreatedEventFilter;
+      puzzle?: null,
+    ): AuctionCreatedEventFilter
     AuctionCreated(
       auctionId?: PromiseOrValue<BigNumberish> | null,
       auctioneer?: PromiseOrValue<string> | null,
       tokenAddress?: null,
       tokenId?: null,
       publicKey?: null,
-      puzzle?: null
-    ): AuctionCreatedEventFilter;
+      puzzle?: null,
+    ): AuctionCreatedEventFilter
 
-    "AuctionFinalized(uint256,address,uint256)"(
+    'AuctionFinalized(uint256,address,uint256)'(
       auctionId?: PromiseOrValue<BigNumberish> | null,
       winner?: null,
-      winningBid?: null
-    ): AuctionFinalizedEventFilter;
+      winningBid?: null,
+    ): AuctionFinalizedEventFilter
     AuctionFinalized(
       auctionId?: PromiseOrValue<BigNumberish> | null,
       winner?: null,
-      winningBid?: null
-    ): AuctionFinalizedEventFilter;
+      winningBid?: null,
+    ): AuctionFinalizedEventFilter
 
-    "AuctionPuzzleSolved(uint256,uint256,uint256,uint256)"(
-      auctionId?: PromiseOrValue<BigNumberish> | null,
-      p?: null,
-      q?: null,
-      d?: null
-    ): AuctionPuzzleSolvedEventFilter;
-    AuctionPuzzleSolved(
-      auctionId?: PromiseOrValue<BigNumberish> | null,
-      p?: null,
-      q?: null,
-      d?: null
-    ): AuctionPuzzleSolvedEventFilter;
-
-    "BidCommitted(uint256,address,uint256,uint256)"(
+    'BidCommitted(uint256,address,uint256,uint256)'(
       auctionId?: PromiseOrValue<BigNumberish> | null,
       bidder?: PromiseOrValue<string> | null,
       sealedBid?: null,
-      ethSent?: null
-    ): BidCommittedEventFilter;
+      ethSent?: null,
+    ): BidCommittedEventFilter
     BidCommitted(
       auctionId?: PromiseOrValue<BigNumberish> | null,
       bidder?: PromiseOrValue<string> | null,
       sealedBid?: null,
-      ethSent?: null
-    ): BidCommittedEventFilter;
+      ethSent?: null,
+    ): BidCommittedEventFilter
 
-    "BidRevealed(uint256,address,uint256,uint256,bool,bool)"(
+    'BidRevealed(uint256,address,uint256,uint256,bool,bool)'(
       auctionId?: PromiseOrValue<BigNumberish> | null,
       bidder?: PromiseOrValue<string> | null,
       bid?: null,
       obfuscation?: null,
       isCurrentHighestBid?: null,
-      isValidBid?: null
-    ): BidRevealedEventFilter;
+      isValidBid?: null,
+    ): BidRevealedEventFilter
     BidRevealed(
       auctionId?: PromiseOrValue<BigNumberish> | null,
       bidder?: PromiseOrValue<string> | null,
       bid?: null,
       obfuscation?: null,
       isCurrentHighestBid?: null,
-      isValidBid?: null
-    ): BidRevealedEventFilter;
+      isValidBid?: null,
+    ): BidRevealedEventFilter
 
-    "Refund(uint256,uint256)"(
+    'Refund(uint256,uint256)'(
       auctionId?: PromiseOrValue<BigNumberish> | null,
-      amount?: null
-    ): RefundEventFilter;
-    Refund(
-      auctionId?: PromiseOrValue<BigNumberish> | null,
-      amount?: null
-    ): RefundEventFilter;
-  };
+      amount?: null,
+    ): RefundEventFilter
+    Refund(auctionId?: PromiseOrValue<BigNumberish> | null, amount?: null): RefundEventFilter
+  }
 
   estimateGas: {
-    auctions(
-      arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    auctions(arg0: PromiseOrValue<BigNumberish>, overrides?: CallOverrides): Promise<BigNumber>
 
     claimRefund(
       auctionId: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
+    ): Promise<BigNumber>
 
     closeAuction(
       auctionId: PromiseOrValue<BigNumberish>,
       p: PromiseOrValue<BigNumberish>,
       q: PromiseOrValue<BigNumberish>,
       d: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
+    ): Promise<BigNumber>
 
     commitBid(
       auctionId: PromiseOrValue<BigNumberish>,
       sealedBid: PromiseOrValue<BigNumberish>,
-      overrides?: PayableOverrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
+      overrides?: PayableOverrides & { from?: PromiseOrValue<string> },
+    ): Promise<BigNumber>
 
     createAuction(
       tokenAddress: PromiseOrValue<string>,
       tokenId: PromiseOrValue<BigNumberish>,
       publicKey: PromiseOrValue<BigNumberish>,
       puzzle: PromiseOrValue<BytesLike>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
+    ): Promise<BigNumber>
 
-    currentAuctionId(overrides?: CallOverrides): Promise<BigNumber>;
+    currentAuctionId(overrides?: CallOverrides): Promise<BigNumber>
 
     decrypt(
       p: PromiseOrValue<BigNumberish>,
       q: PromiseOrValue<BigNumberish>,
       d: PromiseOrValue<BigNumberish>,
       c: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+      overrides?: CallOverrides,
+    ): Promise<BigNumber>
 
-    finalityDelay(overrides?: CallOverrides): Promise<BigNumber>;
+    finalityDelay(overrides?: CallOverrides): Promise<BigNumber>
 
     finalizeAuction(
       auctionId: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
+    ): Promise<BigNumber>
+
+    onERC721Received(
+      arg0: PromiseOrValue<string>,
+      arg1: PromiseOrValue<string>,
+      arg2: PromiseOrValue<BigNumberish>,
+      arg3: PromiseOrValue<BytesLike>,
+      overrides?: CallOverrides,
+    ): Promise<BigNumber>
 
     revealBid(
       auctionId: PromiseOrValue<BigNumberish>,
       bidder: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
+    ): Promise<BigNumber>
 
     sealedBids(
       arg0: PromiseOrValue<BigNumberish>,
       arg1: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+      overrides?: CallOverrides,
+    ): Promise<BigNumber>
 
     settled(
       arg0: PromiseOrValue<BigNumberish>,
       arg1: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
+      overrides?: CallOverrides,
+    ): Promise<BigNumber>
 
-    test(overrides?: CallOverrides): Promise<BigNumber>;
+    test(overrides?: CallOverrides): Promise<BigNumber>
 
-    test2(overrides?: CallOverrides): Promise<BigNumber>;
+    test2(overrides?: CallOverrides): Promise<BigNumber>
 
     unsealedBids(
       arg0: PromiseOrValue<BigNumberish>,
       arg1: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-  };
+      overrides?: CallOverrides,
+    ): Promise<BigNumber>
+  }
 
   populateTransaction: {
     auctions(
       arg0: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+      overrides?: CallOverrides,
+    ): Promise<PopulatedTransaction>
 
     claimRefund(
       auctionId: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
+    ): Promise<PopulatedTransaction>
 
     closeAuction(
       auctionId: PromiseOrValue<BigNumberish>,
       p: PromiseOrValue<BigNumberish>,
       q: PromiseOrValue<BigNumberish>,
       d: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
+    ): Promise<PopulatedTransaction>
 
     commitBid(
       auctionId: PromiseOrValue<BigNumberish>,
       sealedBid: PromiseOrValue<BigNumberish>,
-      overrides?: PayableOverrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
+      overrides?: PayableOverrides & { from?: PromiseOrValue<string> },
+    ): Promise<PopulatedTransaction>
 
     createAuction(
       tokenAddress: PromiseOrValue<string>,
       tokenId: PromiseOrValue<BigNumberish>,
       publicKey: PromiseOrValue<BigNumberish>,
       puzzle: PromiseOrValue<BytesLike>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
+    ): Promise<PopulatedTransaction>
 
-    currentAuctionId(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    currentAuctionId(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     decrypt(
       p: PromiseOrValue<BigNumberish>,
       q: PromiseOrValue<BigNumberish>,
       d: PromiseOrValue<BigNumberish>,
       c: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+      overrides?: CallOverrides,
+    ): Promise<PopulatedTransaction>
 
-    finalityDelay(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    finalityDelay(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     finalizeAuction(
       auctionId: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
+    ): Promise<PopulatedTransaction>
+
+    onERC721Received(
+      arg0: PromiseOrValue<string>,
+      arg1: PromiseOrValue<string>,
+      arg2: PromiseOrValue<BigNumberish>,
+      arg3: PromiseOrValue<BytesLike>,
+      overrides?: CallOverrides,
+    ): Promise<PopulatedTransaction>
 
     revealBid(
       auctionId: PromiseOrValue<BigNumberish>,
       bidder: PromiseOrValue<string>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
+      overrides?: Overrides & { from?: PromiseOrValue<string> },
+    ): Promise<PopulatedTransaction>
 
     sealedBids(
       arg0: PromiseOrValue<BigNumberish>,
       arg1: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+      overrides?: CallOverrides,
+    ): Promise<PopulatedTransaction>
 
     settled(
       arg0: PromiseOrValue<BigNumberish>,
       arg1: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+      overrides?: CallOverrides,
+    ): Promise<PopulatedTransaction>
 
-    test(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    test(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
-    test2(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    test2(overrides?: CallOverrides): Promise<PopulatedTransaction>
 
     unsealedBids(
       arg0: PromiseOrValue<BigNumberish>,
       arg1: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-  };
+      overrides?: CallOverrides,
+    ): Promise<PopulatedTransaction>
+  }
 }

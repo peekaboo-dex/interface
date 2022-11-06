@@ -25,6 +25,13 @@ const DEFAULT_SITE_DESCRIPTION = 'Timelocked Sealed Bid Auctions'
 
 const DEFAULT_CHAIN = chain.goerli
 
+import BigNumber from 'bignumber.js'
+
+BigNumber.config({
+  EXPONENTIAL_AT: 1000,
+  DECIMAL_PLACES: 80,
+})
+
 import '../styles/resets.css'
 import '../styles/base.css'
 import '@rainbow-me/rainbowkit/styles.css'

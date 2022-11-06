@@ -74,7 +74,7 @@ export interface AuctionState extends State {
 }
 
 const useAuctionStateStore = createStore<AuctionState>((set, _get) => ({
-  activeAuctionId:  undefined,
+  activeAuctionId: undefined,
   auctioneer: undefined,
   publicKey: undefined, // bignumber converted to string
   puzzle: undefined,
@@ -101,7 +101,7 @@ const useAuctionStateStore = createStore<AuctionState>((set, _get) => ({
       draft.activeAuctionId = undefined
       draft.auctioneer = undefined
       draft.publicKey = undefined
-      draft.puzzle = undefined;
+      draft.puzzle = undefined
       draft.tokenAddress = undefined
       draft.tokenId = undefined
       draft.bids = undefined
@@ -123,7 +123,7 @@ const useAuctionStateStore = createStore<AuctionState>((set, _get) => ({
       draft.activeAuctionId = parseInt(auctionId.toString())
       draft.auctioneer = auctioneer
       draft.publicKey = publicKey.toString()
-      draft.puzzle = puzzle;
+      draft.puzzle = puzzle
       draft.tokenAddress = tokenAddress
       draft.tokenId = parseInt(tokenId.toString())
     })
@@ -150,7 +150,14 @@ const useAuctionStateStore = createStore<AuctionState>((set, _get) => ({
       draft.d = d.toString()
     })
   },
-  handleBidRevealed(auctionId, revealedBidder, revealedBid, obfusation, isCurrentHighestBid, isValidBid) {
+  handleBidRevealed(
+    auctionId,
+    revealedBidder,
+    revealedBid,
+    obfusation,
+    isCurrentHighestBid,
+    isValidBid,
+  ) {
     set((draft) => {
       draft.revealedBidder = revealedBidder
       draft.revealedBid = revealedBid.toString()
@@ -166,7 +173,6 @@ const useAuctionStateStore = createStore<AuctionState>((set, _get) => ({
     })
   },
 }))
-
 
 // const AppStateEffect: React.FC<{}> = () => {
 //   const acceptVaultTerms = useAppStateStore((s) => s.acceptVaultTerms)

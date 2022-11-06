@@ -57,8 +57,7 @@ const Footer: React.FC<{}> = () => {
       <FooterWrapper>
         <Separator />
         <FooterInnerWrapper>
-          <div>
-          </div>
+          <div></div>
         </FooterInnerWrapper>
       </FooterWrapper>
     </>

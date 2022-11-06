@@ -164,9 +164,9 @@ const Header: React.FC<{}> = () => {
             </>
           )}
         </LeftWrapper>
-        <CenterWrapper>
+        {/* <CenterWrapper>
           <NavTabs compact={isScreenSmall} />
-        </CenterWrapper>
+        </CenterWrapper> */}
 
         {!isScreenSmall && (
           <RightWrapper key={'header-right'}>

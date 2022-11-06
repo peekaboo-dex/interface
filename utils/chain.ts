@@ -9,9 +9,7 @@ const CHAIN_IDS = {
   GOERLI: GOERLI_CHAIN_ID,
 }
 
-const SUPPORTED_CHAINS = [
-  GOERLI_CHAIN_ID,
-]
+const SUPPORTED_CHAINS = [GOERLI_CHAIN_ID]
 
 export { SUPPORTED_CHAINS }
 
@@ -37,8 +35,4 @@ const getChainLabel = (chainId: number) => {
 
 const DEFAULT_CHAIN_ID = CHAIN_IDS.GOERLI
 
-export {
-  CHAIN_IDS,
-  DEFAULT_CHAIN_ID,
-  getChainLabel,
-}
+export { CHAIN_IDS, DEFAULT_CHAIN_ID, getChainLabel }

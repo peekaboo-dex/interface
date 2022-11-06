@@ -53,6 +53,7 @@
     "@visx/shape": "^2.12.2",
     "@visx/tooltip": "^2.10.0",
     "alchemy-sdk": "^2.2.0",
+    "bignumber.js": "^9.1.0",
     "bn.js": "^5.2.1",
     "d3-array": "^3.2.0",
     "d3-time-format": "^4.1.0",

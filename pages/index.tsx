@@ -13,7 +13,12 @@ import { StyledNewButton } from '../components/ConnectWalletButton'
 import { useRouter } from 'next/router'
 import { Spacer } from '../components/Spacer'
 import { PrimaryButton } from '../components/PrimaryButton'
-import { DEFAULT_CHAIN_ID, DOCS_URL, EXCHANGE_CONTRACT_ADDRESS_GOERLI, PARADIGM_TEST_NFT_CONTRACT_ADDRESS } from '../config'
+import {
+  DEFAULT_CHAIN_ID,
+  DOCS_URL,
+  EXCHANGE_CONTRACT_ADDRESS_GOERLI,
+  PARADIGM_TEST_NFT_CONTRACT_ADDRESS,
+} from '../config'
 import { useAccount, useProvider, useSigner } from 'wagmi'
 import { useNftsInWalletByCollection } from '../hooks/useNftsInWallet'
 import { CHAIN_IDS } from '../utils/chain'
@@ -189,7 +194,6 @@ const GridRightBody = styled.div`
 `
 
 export default function HomePage() {
-
   const [selectedTokenAddress, setSelectedTokenAddress] = useState<string | null>(null)
   const [selectedTokenId, setSelectedTokenId] = useState<number | null>(null)
 
@@ -197,7 +201,11 @@ export default function HomePage() {
 
   const walletAddress = account.address
 
-  const nftsQuery = useNftsInWalletByCollection(walletAddress, PARADIGM_TEST_NFT_CONTRACT_ADDRESS, DEFAULT_CHAIN_ID.toString())
+  const nftsQuery = useNftsInWalletByCollection(
+    walletAddress,
+    PARADIGM_TEST_NFT_CONTRACT_ADDRESS,
+    DEFAULT_CHAIN_ID.toString(),
+  )
   // console.log('nfts', nfts.data)
 
   const nfts = nftsQuery.data?.ownedNfts
@@ -208,7 +216,7 @@ export default function HomePage() {
     }
     setSelectedTokenId(parseInt(nftToAuction.id.tokenId, 16))
     setSelectedTokenAddress(nftToAuction.contract.address)
-  } ,[nfts])
+  }, [nfts])
   const chainId = CHAIN_IDS.GOERLI
 
   const provider = useProvider({ chainId })
@@ -217,7 +225,11 @@ export default function HomePage() {
 
   const exchangeContract = IExchange__factory.connect(EXCHANGE_CONTRACT_ADDRESS_GOERLI, provider)
 
-  const createAuctionMutation = useSmartContractTransaction(exchangeContract, 'createAuction', signer!)
+  const createAuctionMutation = useSmartContractTransaction(
+    exchangeContract,
+    'createAuction',
+    signer!,
+  )
 
   // const doQuery = useSmartContractReadCall(exchangeContract, '')
 
@@ -241,7 +253,6 @@ export default function HomePage() {
     const events = result?.events
     const argsOfFirstEvent = events?.[0].args
   }
-
 
   console.log('selectedTokenId', selectedTokenId)
 
@@ -371,9 +382,7 @@ export default function HomePage() {
             ...trail[3],
           }}
         >
-          <div>
-            {/* stuff here... */}
-          </div>
+          <div>{/* stuff here... */}</div>
         </animated.div>
 
         <FillSpacer />

@@ -27,7 +27,6 @@ function CloseIcon() {
   )
 }
 
-
 export const FlexRow = styled.div`
   display: flex;
   align-items: center;
@@ -38,7 +37,6 @@ export const FlexRowIndented = styled(FlexRow)`
   margin-left: 16px;
   margin-right: 16px;
 `
-
 
 type ModalProps = AriaOverlayProps &
   AriaDialogProps & {

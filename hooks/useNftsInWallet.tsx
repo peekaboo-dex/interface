@@ -17,17 +17,17 @@ const CHAIN_IDS = {
 }
 
 export const getRpcUrlForChain = (chainId: string | number): string => {
-    switch (parseInt(chainId.toString(10), 10)) {
-      case CHAIN_IDS.GOERLI:
-        return 'https://eth-goerli.g.alchemy.com/v2/fzfoTAzE9tNcmS6Ip6k9iIW0yXoHC2WW'
-      case CHAIN_IDS.MAINNET:
-        return 'https://eth-mainnet.g.alchemy.com/v2/78FpeWT_I1h9utpbdDPcHxglzb--wIJ0'
-      case CHAIN_IDS.RINKEBY:
-        return 'https://eth-rinkeby.alchemyapi.io/v2/dH-CZ9rd8Lz0u4xjDyNQcgPWoZJgU_k4'
-      default:
-        throw new Error(`No RPC URL found for chainID ${chainId}`)
-    }
+  switch (parseInt(chainId.toString(10), 10)) {
+    case CHAIN_IDS.GOERLI:
+      return 'https://eth-goerli.g.alchemy.com/v2/fzfoTAzE9tNcmS6Ip6k9iIW0yXoHC2WW'
+    case CHAIN_IDS.MAINNET:
+      return 'https://eth-mainnet.g.alchemy.com/v2/78FpeWT_I1h9utpbdDPcHxglzb--wIJ0'
+    case CHAIN_IDS.RINKEBY:
+      return 'https://eth-rinkeby.alchemyapi.io/v2/dH-CZ9rd8Lz0u4xjDyNQcgPWoZJgU_k4'
+    default:
+      throw new Error(`No RPC URL found for chainID ${chainId}`)
   }
+}
 
 // alchemy
 interface NftMetadata {
@@ -101,17 +101,16 @@ const fetchNftsOwnedByContractAddress = async (
   }
 
   let contractAddressFragment = ''
-  if (contractAddress === null ) {
-    // 
+  if (contractAddress === null) {
+    //
   } else {
-
     contractAddressFragment = Array.isArray(contractAddress)
       ? contractAddress.map((address) => `contractAddresses[]=${address}`).join('&')
       : `contractAddresses[]=${contractAddress}`
-    }
-    const ownedNftsResponse = await $fetch<GetNftsBalanceFromAlchemyResponse>(
-      `${rpcUrl}/getNFTs?owner=${walletAddress}&${contractAddressFragment}`,
-    )
+  }
+  const ownedNftsResponse = await $fetch<GetNftsBalanceFromAlchemyResponse>(
+    `${rpcUrl}/getNFTs?owner=${walletAddress}&${contractAddressFragment}`,
+  )
 
   return ownedNftsResponse
 }
