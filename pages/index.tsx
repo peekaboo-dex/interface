@@ -217,7 +217,7 @@ export default function HomePage() {
     setSelectedTokenId(parseInt(nftToAuction.id.tokenId, 16))
     setSelectedTokenAddress(nftToAuction.contract.address)
   }, [nfts])
-  const chainId = CHAIN_IDS.GOERLI
+  const chainId = DEFAULT_CHAIN_ID
 
   const provider = useProvider({ chainId })
 

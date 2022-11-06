@@ -23,7 +23,7 @@ import { theme } from '../styles/theme'
 const DEFAULT_SITE_TITLE = 'Peekaboo'
 const DEFAULT_SITE_DESCRIPTION = 'Timelocked Sealed Bid Auctions'
 
-const DEFAULT_CHAIN = chain.goerli
+const DEFAULT_CHAIN = chain.optimismGoerli
 
 import BigNumber from 'bignumber.js'
 
@@ -149,6 +149,7 @@ export default function LemmaFinanceApp({
         //   },
         // ]}
       />
+
       <style jsx global>{`
         * {
           margin: 0;
