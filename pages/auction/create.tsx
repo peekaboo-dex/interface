@@ -453,7 +453,7 @@ export default function HomePage() {
   const isScreenSmall = windowWidth <= breakpoints.upToMedium
 
   const NftName = `Peekaboo Test NFT #7`
-  const collectionName = `Peekaboo Commit Reveal Test Collection`
+  const collectionName = `Peekaboo Test Collection`
 
   const [manuallyStarted, setManuallyStarted] = useState<boolean>(false)
 
@@ -494,7 +494,9 @@ export default function HomePage() {
 
   let DerivedButton = () => {
     if (auctionStatus === 'idle') {
-      return <PrimaryButton onPress={() => setManuallyStarted(true)}>Create Auction</PrimaryButton>
+      return (
+        <PrimaryButton onPress={() => setManuallyStarted(true)}>Create Blind Auction</PrimaryButton>
+      )
     }
     if (auctionStatus === 'creating-onchain') {
       return (
@@ -531,8 +533,8 @@ export default function HomePage() {
     config: config.stiff,
   })
 
-  const values = [1000, 998, 994, 992]
-
+  const values = [42000000, 40003100, 39423453, 3545355].map(x => x / 1e8)
+  const winningBid = values[0]
   return (
     <>
       <PageWrapper blur={false}>
@@ -542,9 +544,9 @@ export default function HomePage() {
           <AniamtedBelowFoldWrapper style={{ ...trail[2] }}>
             <ContentContainer style={{}}>
               <div>
-                <H5>{collectionName}</H5>
-                <Spacer size={2} />
                 <H2>{NftName}</H2>
+                <Spacer size={2} />
+                <H5>{collectionName}</H5>
                 <Spacer size={16} />
 
                 {/* <div
@@ -605,7 +607,9 @@ export default function HomePage() {
                                   <div>{getShortenedAddress(bid.bidder)}</div>
 
                                   <div>
-                                    {auctionStatus === 'auction-settled' ? values[i] : '???'}
+                                    {auctionStatus === 'auction-settled'
+                                      ? `${values[i]} ETH`
+                                      : `<sealed bid 0x${bid.sealedBid.substring(0, 4)}>`}
                                   </div>
                                 </div>
                               )
@@ -619,7 +623,7 @@ export default function HomePage() {
                             <H4>Winner</H4>
                             <Spacer size={4} />
                             <div>Winner: {getShortenedAddress(auctionStore?.winner ?? '')}</div>
-                            <div>Winning bid: {auctionStore.winningBid}</div>
+                            <div>Winning bid: {winningBid} ETH</div>
                           </>
                         )}
                       </AnimatedPositionAbsolute>
