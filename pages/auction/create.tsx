@@ -488,7 +488,7 @@ export default function HomePage() {
     auctionStatus = 'auction-close'
   }
   if (hasAuctionBeenSolvedAndWinnerDetermined) {
-    auctionStatusLabel = `Auction settled, winner chosen`
+    auctionStatusLabel = `Auction settled, winner revealed`
     auctionStatus = 'auction-settled'
   }
 
@@ -533,7 +533,7 @@ export default function HomePage() {
     config: config.stiff,
   })
 
-  const values = [42000000, 40003100, 39423453, 3545355].map(x => x / 1e8)
+  const values = [42000000, 40003100, 39423453, 3545355].map((x) => x / 1e8)
   const winningBid = values[0]
   return (
     <>
@@ -595,6 +595,7 @@ export default function HomePage() {
                         <div style={{ width: '90%' }}>
                           {!noBids &&
                             auctionStore.bids?.map((bid, i) => {
+                              const showIsWinner = auctionStatus === 'auction-settled' && i === 0
                               return (
                                 <div
                                   key={bid.bidder}
@@ -602,11 +603,22 @@ export default function HomePage() {
                                     display: 'flex',
                                     flexDirection: 'row',
                                     justifyContent: 'space-between',
+                                    position: 'relative',
                                   }}
                                 >
                                   <div>{getShortenedAddress(bid.bidder)}</div>
 
-                                  <div>
+                                  <div style={{ position: 'relative' }}>
+                                    {showIsWinner && (
+                                      <div
+                                        style={{
+                                          position: 'absolute',
+                                          right: -20,
+                                        }}
+                                      >
+                                        ✅
+                                      </div>
+                                    )}
                                     {auctionStatus === 'auction-settled'
                                       ? `${values[i]} ETH`
                                       : `<sealed bid 0x${bid.sealedBid.substring(0, 4)}>`}

@@ -19,7 +19,7 @@ const StyledButton = styled.button<{ isPressed: boolean; isDisabled?: boolean }>
   background: #000000;
   border: 1px solid #ffffff;
   padding: 20px;
-  box-shadow: inset 0px 1px 2px rgba(255, 255, 255, 0.24), inset 0px 0px 12px #F8D6EB;
+  box-shadow: inset 0px 1px 2px rgba(255, 255, 255, 0.24), inset 0px 0px 12px #f8d6eb;
   border-radius: 26px;
 
   font-style: normal;
