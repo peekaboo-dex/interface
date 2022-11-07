@@ -117,37 +117,6 @@ export default function LemmaFinanceApp({
       <DefaultSeo
         title={DEFAULT_SITE_TITLE}
         description={DEFAULT_SITE_DESCRIPTION}
-        // openGraph={{
-        //   type: 'website',
-        //   locale: 'en_US',
-        //   url: ROOT_URL_PRODUCTION,
-        //   title: DEFAULT_SITE_TITLE,
-        //   description: DEFAULT_SITE_DESCRIPTION,
-        //   site_name: 'Lemma',
-        //   images: [
-        //     {
-        //       url: `${ROOT_URL_PRODUCTION}/images/og/lemma-banner.png`,
-        //       width: 1200,
-        //       height: 627,
-        //       alt: 'Lemma.finance',
-        //     },
-        //   ],
-        // }}
-        // twitter={{
-        //   handle: '@LemmaFinance',
-        //   site: '@LemmaFinance',
-        //   cardType: 'summary_large_image',
-        // }}
-        // additionalMetaTags={[
-        //   {
-        //     name: 'twitter:image',
-        //     content: `${ROOT_URL_PRODUCTION}/images/og/lemma-banner.png`,
-        //   },
-        //   {
-        //     name: 'twitter:url',
-        //     content: ROOT_URL_PRODUCTION,
-        //   },
-        // ]}
       />
       <style jsx global>{`
         * {
@@ -168,12 +137,6 @@ export default function LemmaFinanceApp({
                     chains={chains}
                     initialChain={DEFAULT_CHAIN}
                   >
-                    <>
-                      {/* <ProvidersEffects /> */}
-                      {/* <BlockWatcherEffect /> */}
-                      {/* <LemmaEffect /> */}
-                      {/* <AppStateEffect /> */}
-                    </>
                     <Toaster
                       position="top-right"
                       reverseOrder={false}
